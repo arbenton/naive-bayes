@@ -7,6 +7,7 @@ A C implementation of gaussian naive bayes with python bindings.
 To setup:
 
 `python setup.py build_ext --inplace`
+
 To test:
 
 `python test.py`
