@@ -286,7 +286,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 
 #define __PYX_HAVE__naive_bayes
 #define __PYX_HAVE_API__naive_bayes
-#include "../src/c_naive_bayes.h"
+#include "c_naive_bayes.h"
 #include "string.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -529,7 +529,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "cyth/naive_bayes.pyx",
+  "src/naive_bayes.pyx",
   "__init__.pxd",
   "type.pxd",
 };
