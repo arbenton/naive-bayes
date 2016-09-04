@@ -3,14 +3,20 @@
 #include <gsl/gsl_randist.h>
 #include <gsl/gsl_statistics_double.h>
 
-#include "naive_bayes.h"
+#include "c_naive_bayes.h"
 
-gnb_classifier *new_gnb_classifier(double *X, int *y, int fac, int pop, int dim)
+struct _gnb_classifier {
+	double *mean;
+	double *std;
+	double *class_prior;
+	double *class_mean;
+	double *class_std;
+	long int fac;
+	long int dim;
+};
+
+gnb_classifier *new_gnb_classifier(long int fac, long int dim)
 {
-	double work[pop*dim]; // workspace array
-	int len;
-	int f, p, d;
-
 	/* Initialize classifier and all arrays */
 
 	gnb_classifier *clf = malloc(sizeof(gnb_classifier));
@@ -22,7 +28,19 @@ gnb_classifier *new_gnb_classifier(double *X, int *y, int fac, int pop, int dim)
 	clf->fac = fac;
 	clf->dim = dim;
 
-	/* mean and standard deviation */
+	return clf;
+}
+
+long int gnb_train(gnb_classifier *clf, double *X, long int *y, long int pop)
+{
+    long int dim = clf->dim;
+    long int fac = clf->fac;
+
+    double work[pop*dim]; // workspace array
+	long int len;
+	long int f, p, d;
+
+    /* mean and standard deviation */
 
 	for (d=0; d<dim; d++) {
 		clf->mean[d] = gsl_stats_mean(X + d, dim, pop); //!
@@ -53,24 +71,23 @@ gnb_classifier *new_gnb_classifier(double *X, int *y, int fac, int pop, int dim)
 			clf->class_std[f*dim + d] = gsl_stats_sd_m(work + d, dim, len, clf->class_mean[f*dim + d]);
 		}
 	}
-
-	return clf;
+    return 0;
 }
 
-int gnb_classify(gnb_classifier *clf, double *X)
+long int gnb_classify(gnb_classifier *clf, double *X)
 {
-	int dim, fac;
+	long int dim, fac;
 
 	dim = clf->dim;
 	fac = clf->fac;
 
-	int class;
+	long int class;
 	double best;
 	double evid;
 	double like;
 	double post[fac];
 	double temp;
-	int d, f;
+	long int d, f;
 
 	/* Evidence */
 
@@ -79,7 +96,7 @@ int gnb_classify(gnb_classifier *clf, double *X)
 		temp = (X[d] - clf->mean[d]) / clf->std[d];
 		evid *= gsl_ran_gaussian_pdf(temp, 1.0);
 	}
-	
+
 	/* Select best class */
 
 	best = 0.0;
