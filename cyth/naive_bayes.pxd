@@ -1,4 +1,4 @@
-cdef extern from "c_naive_bayes.h":
+cdef extern from "../src/c_naive_bayes.h":
 
     ctypedef struct gnb_classifier
     gnb_classifier *new_gnb_classifier(long int fac, long int dim)
