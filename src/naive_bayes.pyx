@@ -63,3 +63,10 @@ cdef class Naive_Bayes_Classifier:
         result = self._c(X)
 
         return result
+
+    def __del__ (self):
+
+        status = naive_bayes.free_gnb_classifier(self.clf)
+
+        if status:
+            raise MemoryError("Deallocation failed")

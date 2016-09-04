@@ -13,3 +13,5 @@ y = np.array([0 for _ in cat_1] + [1 for _ in cat_2]).copy(order="c")
 clf = Naive_Bayes_Classifier(2, 2)
 clf.train(X, y)
 print clf.classify(np.array([3.0, 3.0]))
+
+del clf
