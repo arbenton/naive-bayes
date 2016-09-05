@@ -119,7 +119,7 @@ inline int bnb_classify_one(bnb_classifier *clf, long int *X)
 		}
 		/* Posteriors and selection */
 
-		post[f] = exp(clf->class_prior[f] + like - evid);
+		post[f] = exp(log(clf->class_prior[f]) + like - evid);
 		if (best < post[f]) {
 			best = post[f];
 			class = f;

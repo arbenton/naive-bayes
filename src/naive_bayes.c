@@ -8,11 +8,13 @@
             "src/c_gaussian_naive_bayes.h"
         ], 
         "extra_compile_args": [
-            "-O3"
+            "-O3", 
+            "-Wall"
         ], 
         "libraries": [
             "gsl", 
-            "gslcblas"
+            "gslcblas", 
+            "m"
         ], 
         "library_dirs": [
             "/usr/lib/x86_64-linux-gnu"
@@ -288,8 +290,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__naive_bayes
-#define __PYX_HAVE_API__naive_bayes
+#define __PYX_HAVE__src__naive_bayes
+#define __PYX_HAVE_API__src__naive_bayes
 #include "c_gaussian_naive_bayes.h"
 #include "c_bernoulli_naive_bayes.h"
 #include "string.h"
@@ -787,8 +789,8 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
 
 /*--- Type declarations ---*/
-struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier;
-struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier;
+struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier;
+struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier;
 
 /* "../../../../../usr/local/lib/python2.7/dist-packages/Cython/Includes/numpy/__init__.pxd":764
  * ctypedef npy_longdouble longdouble_t
@@ -826,27 +828,27 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "naive_bayes.pyx":5
+/* "src/naive_bayes.pyx":5
  * cimport numpy as np
  * 
  * cdef class GaussianNaiveBayesClassifier:             # <<<<<<<<<<<<<<
  * 
  *     cdef naive_bayes.gnb_classifier* clf
  */
-struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier {
+struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier {
   PyObject_HEAD
   gnb_classifier *clf;
 };
 
 
-/* "naive_bayes.pyx":82
+/* "src/naive_bayes.pyx":82
  * 
  * 
  * cdef class BernoulliNaiveBayesClassifier:             # <<<<<<<<<<<<<<
  * 
  *     cdef naive_bayes.bnb_classifier* clf
  */
-struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier {
+struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier {
   PyObject_HEAD
   bnb_classifier *clf;
 };
@@ -1273,15 +1275,15 @@ static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
-/* Module declarations from 'naive_bayes' */
-static PyTypeObject *__pyx_ptype_11naive_bayes_GaussianNaiveBayesClassifier = 0;
-static PyTypeObject *__pyx_ptype_11naive_bayes_BernoulliNaiveBayesClassifier = 0;
+/* Module declarations from 'src.naive_bayes' */
+static PyTypeObject *__pyx_ptype_3src_11naive_bayes_GaussianNaiveBayesClassifier = 0;
+static PyTypeObject *__pyx_ptype_3src_11naive_bayes_BernoulliNaiveBayesClassifier = 0;
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
-#define __Pyx_MODULE_NAME "naive_bayes"
-int __pyx_module_is_main_naive_bayes = 0;
+#define __Pyx_MODULE_NAME "src.naive_bayes"
+int __pyx_module_is_main_src__naive_bayes = 0;
 
-/* Implementation of 'naive_bayes' */
+/* Implementation of 'src.naive_bayes' */
 static PyObject *__pyx_builtin_TypeError;
 static PyObject *__pyx_builtin_MemoryError;
 static PyObject *__pyx_builtin_RuntimeError;
@@ -1308,9 +1310,9 @@ static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_MemoryError[] = "MemoryError";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_n_dimensions[] = "n_dimensions";
+static const char __pyx_k_BNB_Training_Failed[] = "BNB Training Failed";
 static const char __pyx_k_Deallocation_failed[] = "Deallocation failed";
 static const char __pyx_k_GNB_Training_Failed[] = "GNB Training Failed";
-static const char __pyx_k_bnb_Training_Failed[] = "bnb Training Failed";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
 static const char __pyx_k_n_factors_must_be_of_type_int[] = "n_factors must be of type int.";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
@@ -1320,6 +1322,7 @@ static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte 
 static const char __pyx_k_n_dimensions_must_be_of_type_int[] = "n_dimensions must be of type int.";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_Format_string_allocated_too_shor_2[] = "Format string allocated too short.";
+static PyObject *__pyx_kp_s_BNB_Training_Failed;
 static PyObject *__pyx_kp_s_Deallocation_failed;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
@@ -1332,7 +1335,6 @@ static PyObject *__pyx_n_s_RuntimeError;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_X;
-static PyObject *__pyx_kp_s_bnb_Training_Failed;
 static PyObject *__pyx_n_s_c;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_import;
@@ -1353,22 +1355,22 @@ static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_zeros;
-static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self); /* proto */
-static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X); /* proto */
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self); /* proto */
+static int __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_6train(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self); /* proto */
+static int __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X); /* proto */
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
-static PyObject *__pyx_tp_new_11naive_bayes_GaussianNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_11naive_bayes_BernoulliNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3src_11naive_bayes_GaussianNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3src_11naive_bayes_BernoulliNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_2;
 static PyObject *__pyx_tuple_;
@@ -1392,7 +1394,7 @@ static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__19;
 static PyObject *__pyx_tuple__20;
 
-/* "naive_bayes.pyx":9
+/* "src/naive_bayes.pyx":9
  *     cdef naive_bayes.gnb_classifier* clf
  * 
  *     def __cinit__ (self, n_factors, n_dimensions):             # <<<<<<<<<<<<<<
@@ -1401,8 +1403,8 @@ static PyObject *__pyx_tuple__20;
  */
 
 /* Python wrapper */
-static int __pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_n_factors = 0;
   PyObject *__pyx_v_n_dimensions = 0;
   int __pyx_r;
@@ -1447,18 +1449,18 @@ static int __pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 9, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_n_factors, __pyx_v_n_dimensions);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_n_factors, __pyx_v_n_dimensions);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions) {
+static int __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -1468,7 +1470,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   long __pyx_t_5;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "naive_bayes.pyx":11
+  /* "src/naive_bayes.pyx":11
  *     def __cinit__ (self, n_factors, n_dimensions):
  * 
  *         if isinstance(n_factors, int):             # <<<<<<<<<<<<<<
@@ -1481,7 +1483,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":14
+  /* "src/naive_bayes.pyx":14
  *             pass
  *         else:
  *             raise TypeError("n_factors must be of type int.")             # <<<<<<<<<<<<<<
@@ -1497,7 +1499,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":15
+  /* "src/naive_bayes.pyx":15
  *         else:
  *             raise TypeError("n_factors must be of type int.")
  *         if isinstance(n_dimensions, int):             # <<<<<<<<<<<<<<
@@ -1510,7 +1512,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
     goto __pyx_L4;
   }
 
-  /* "naive_bayes.pyx":18
+  /* "src/naive_bayes.pyx":18
  *             pass
  *         else:
  *             raise TypeError("n_dimensions must be of type int.")             # <<<<<<<<<<<<<<
@@ -1526,7 +1528,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   }
   __pyx_L4:;
 
-  /* "naive_bayes.pyx":20
+  /* "src/naive_bayes.pyx":20
  *             raise TypeError("n_dimensions must be of type int.")
  * 
  *         self.clf = naive_bayes.new_gnb_classifier(n_factors, n_dimensions)             # <<<<<<<<<<<<<<
@@ -1537,7 +1539,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_v_n_dimensions); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L1_error)
   __pyx_v_self->clf = new_gnb_classifier(__pyx_t_4, __pyx_t_5);
 
-  /* "naive_bayes.pyx":22
+  /* "src/naive_bayes.pyx":22
  *         self.clf = naive_bayes.new_gnb_classifier(n_factors, n_dimensions)
  * 
  *         if self.clf == NULL:             # <<<<<<<<<<<<<<
@@ -1547,7 +1549,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   __pyx_t_1 = ((__pyx_v_self->clf == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":23
+    /* "src/naive_bayes.pyx":23
  * 
  *         if self.clf == NULL:
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")             # <<<<<<<<<<<<<<
@@ -1560,7 +1562,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(0, 23, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":22
+    /* "src/naive_bayes.pyx":22
  *         self.clf = naive_bayes.new_gnb_classifier(n_factors, n_dimensions)
  * 
  *         if self.clf == NULL:             # <<<<<<<<<<<<<<
@@ -1569,7 +1571,7 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
  */
   }
 
-  /* "naive_bayes.pyx":9
+  /* "src/naive_bayes.pyx":9
  *     cdef naive_bayes.gnb_classifier* clf
  * 
  *     def __cinit__ (self, n_factors, n_dimensions):             # <<<<<<<<<<<<<<
@@ -1582,14 +1584,14 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":25
+/* "src/naive_bayes.pyx":25
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")
  * 
  *     def _t(self,             # <<<<<<<<<<<<<<
@@ -1598,8 +1600,8 @@ static int __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier___cinit__(struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_X = 0;
   PyArrayObject *__pyx_v_y = 0;
   int __pyx_v_pop;
@@ -1653,13 +1655,13 @@ static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObj
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_t", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 25, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 26, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_5numpy_ndarray, 1, "y", 0))) __PYX_ERR(0, 27, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_pop);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_pop);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1670,7 +1672,7 @@ static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_3_t(PyObj
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop) {
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_X;
   __Pyx_Buffer __pyx_pybuffer_X;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_y;
@@ -1702,7 +1704,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struc
   }
   __pyx_pybuffernd_y.diminfo[0].strides = __pyx_pybuffernd_y.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y.diminfo[0].shape = __pyx_pybuffernd_y.rcbuffer->pybuffer.shape[0];
 
-  /* "naive_bayes.pyx":30
+  /* "src/naive_bayes.pyx":30
  *             int pop):
  * 
  *         return naive_bayes.gnb_train(self.clf, &X[0, 0], &y[0], pop)             # <<<<<<<<<<<<<<
@@ -1741,7 +1743,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struc
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":25
+  /* "src/naive_bayes.pyx":25
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")
  * 
  *     def _t(self,             # <<<<<<<<<<<<<<
@@ -1759,7 +1761,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struc
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_X.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -1771,7 +1773,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struc
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":32
+/* "src/naive_bayes.pyx":32
  *         return naive_bayes.gnb_train(self.clf, &X[0, 0], &y[0], pop)
  * 
  *     def _c (self,             # <<<<<<<<<<<<<<
@@ -1780,8 +1782,8 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_2_t(struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_X = 0;
   PyArrayObject *__pyx_v_y = 0;
   PyObject *__pyx_v_N = 0;
@@ -1835,13 +1837,13 @@ static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObj
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_c", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 33, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_5numpy_ndarray, 1, "y", 0))) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_N);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_N);
 
   /* function exit code */
   goto __pyx_L0;
@@ -1852,7 +1854,7 @@ static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_5_c(PyObj
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N) {
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_X;
   __Pyx_Buffer __pyx_pybuffer_X;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_y;
@@ -1884,7 +1886,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struc
   }
   __pyx_pybuffernd_y.diminfo[0].strides = __pyx_pybuffernd_y.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y.diminfo[0].shape = __pyx_pybuffernd_y.rcbuffer->pybuffer.shape[0];
 
-  /* "naive_bayes.pyx":37
+  /* "src/naive_bayes.pyx":37
  *             N):
  * 
  *         return naive_bayes.gnb_classify(self.clf, &X[0, 0], &y[0], N)             # <<<<<<<<<<<<<<
@@ -1924,7 +1926,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struc
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":32
+  /* "src/naive_bayes.pyx":32
  *         return naive_bayes.gnb_train(self.clf, &X[0, 0], &y[0], pop)
  * 
  *     def _c (self,             # <<<<<<<<<<<<<<
@@ -1942,7 +1944,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struc
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_X.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -1954,7 +1956,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struc
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":39
+/* "src/naive_bayes.pyx":39
  *         return naive_bayes.gnb_classify(self.clf, &X[0, 0], &y[0], N)
  * 
  *     def train (self, X, y):             # <<<<<<<<<<<<<<
@@ -1963,8 +1965,8 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_4_c(struc
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_X = 0;
   PyObject *__pyx_v_y = 0;
   PyObject *__pyx_r = 0;
@@ -2009,18 +2011,18 @@ static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_7train(Py
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("train", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_6train(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y) {
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_6train(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y) {
   int __pyx_v_pop;
   PyObject *__pyx_v_status = NULL;
   PyObject *__pyx_r = NULL;
@@ -2036,7 +2038,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("train", 0);
 
-  /* "naive_bayes.pyx":41
+  /* "src/naive_bayes.pyx":41
  *     def train (self, X, y):
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -2063,7 +2065,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":44
+  /* "src/naive_bayes.pyx":44
  *             pass
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -2079,7 +2081,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":45
+  /* "src/naive_bayes.pyx":45
  *         else:
  *             raise TypeError()
  *         if isinstance(y, np.ndarray) and y.ndim==1:             # <<<<<<<<<<<<<<
@@ -2106,7 +2108,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
     goto __pyx_L6;
   }
 
-  /* "naive_bayes.pyx":48
+  /* "src/naive_bayes.pyx":48
  *             pass
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -2122,7 +2124,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   }
   __pyx_L6:;
 
-  /* "naive_bayes.pyx":50
+  /* "src/naive_bayes.pyx":50
  *             raise TypeError()
  * 
  *         cdef int pop = len(y)             # <<<<<<<<<<<<<<
@@ -2132,7 +2134,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   __pyx_t_6 = PyObject_Length(__pyx_v_y); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_v_pop = __pyx_t_6;
 
-  /* "naive_bayes.pyx":52
+  /* "src/naive_bayes.pyx":52
  *         cdef int pop = len(y)
  * 
  *         status = self._t(X, y, pop)             # <<<<<<<<<<<<<<
@@ -2176,7 +2178,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   __pyx_v_status = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "naive_bayes.pyx":54
+  /* "src/naive_bayes.pyx":54
  *         status = self._t(X, y, pop)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -2186,7 +2188,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_status); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":55
+    /* "src/naive_bayes.pyx":55
  * 
  *         if status:
  *             raise RuntimeError("GNB Training Failed")             # <<<<<<<<<<<<<<
@@ -2199,7 +2201,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 55, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":54
+    /* "src/naive_bayes.pyx":54
  *         status = self._t(X, y, pop)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -2208,7 +2210,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
  */
   }
 
-  /* "naive_bayes.pyx":39
+  /* "src/naive_bayes.pyx":39
  *         return naive_bayes.gnb_classify(self.clf, &X[0, 0], &y[0], N)
  * 
  *     def train (self, X, y):             # <<<<<<<<<<<<<<
@@ -2225,7 +2227,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_status);
@@ -2234,7 +2236,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":57
+/* "src/naive_bayes.pyx":57
  *             raise RuntimeError("GNB Training Failed")
  * 
  *     def classify (self, X):             # <<<<<<<<<<<<<<
@@ -2243,19 +2245,19 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_6train(st
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X) {
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("classify (wrapper)", 0);
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), ((PyObject *)__pyx_v_X));
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self), ((PyObject *)__pyx_v_X));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X) {
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_8classify(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X) {
   int __pyx_v_N;
   PyObject *__pyx_v_y = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_status = NULL;
@@ -2273,7 +2275,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __Pyx_RefNannySetupContext("classify", 0);
   __Pyx_INCREF(__pyx_v_X);
 
-  /* "naive_bayes.pyx":61
+  /* "src/naive_bayes.pyx":61
  *         cdef int N
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -2298,7 +2300,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":62
+    /* "src/naive_bayes.pyx":62
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)             # <<<<<<<<<<<<<<
@@ -2308,7 +2310,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
     __pyx_t_6 = PyObject_Length(__pyx_v_X); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 62, __pyx_L1_error)
     __pyx_v_N = __pyx_t_6;
 
-    /* "naive_bayes.pyx":61
+    /* "src/naive_bayes.pyx":61
  *         cdef int N
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -2318,7 +2320,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":63
+  /* "src/naive_bayes.pyx":63
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:             # <<<<<<<<<<<<<<
@@ -2343,7 +2345,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":64
+    /* "src/naive_bayes.pyx":64
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]             # <<<<<<<<<<<<<<
@@ -2355,7 +2357,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
     __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "naive_bayes.pyx":65
+    /* "src/naive_bayes.pyx":65
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]
  *             N = 1             # <<<<<<<<<<<<<<
@@ -2364,7 +2366,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
  */
     __pyx_v_N = 1;
 
-    /* "naive_bayes.pyx":63
+    /* "src/naive_bayes.pyx":63
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:             # <<<<<<<<<<<<<<
@@ -2374,7 +2376,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":67
+  /* "src/naive_bayes.pyx":67
  *             N = 1
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -2390,7 +2392,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":69
+  /* "src/naive_bayes.pyx":69
  *             raise TypeError()
  * 
  *         y = np.zeros(N, dtype=int)             # <<<<<<<<<<<<<<
@@ -2420,7 +2422,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __pyx_v_y = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "naive_bayes.pyx":70
+  /* "src/naive_bayes.pyx":70
  * 
  *         y = np.zeros(N, dtype=int)
  *         status = self._c(X, y, N)             # <<<<<<<<<<<<<<
@@ -2464,7 +2466,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __pyx_v_status = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "naive_bayes.pyx":72
+  /* "src/naive_bayes.pyx":72
  *         status = self._c(X, y, N)
  * 
  *         return y             # <<<<<<<<<<<<<<
@@ -2476,7 +2478,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __pyx_r = __pyx_v_y;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":57
+  /* "src/naive_bayes.pyx":57
  *             raise RuntimeError("GNB Training Failed")
  * 
  *     def classify (self, X):             # <<<<<<<<<<<<<<
@@ -2491,7 +2493,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.classify", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.classify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_y);
@@ -2502,7 +2504,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":74
+/* "src/naive_bayes.pyx":74
  *         return y
  * 
  *     def __del__ (self):             # <<<<<<<<<<<<<<
@@ -2511,19 +2513,19 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_8classify
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(((struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(((struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier *__pyx_v_self) {
   int __pyx_v_status;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2531,7 +2533,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("__del__", 0);
 
-  /* "naive_bayes.pyx":76
+  /* "src/naive_bayes.pyx":76
  *     def __del__ (self):
  * 
  *         status = naive_bayes.free_gnb_classifier(self.clf)             # <<<<<<<<<<<<<<
@@ -2540,7 +2542,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
  */
   __pyx_v_status = free_gnb_classifier(__pyx_v_self->clf);
 
-  /* "naive_bayes.pyx":78
+  /* "src/naive_bayes.pyx":78
  *         status = naive_bayes.free_gnb_classifier(self.clf)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -2550,7 +2552,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
   __pyx_t_1 = (__pyx_v_status != 0);
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":79
+    /* "src/naive_bayes.pyx":79
  * 
  *         if status:
  *             raise MemoryError("Deallocation failed")             # <<<<<<<<<<<<<<
@@ -2563,7 +2565,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 79, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":78
+    /* "src/naive_bayes.pyx":78
  *         status = naive_bayes.free_gnb_classifier(self.clf)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -2572,7 +2574,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
  */
   }
 
-  /* "naive_bayes.pyx":74
+  /* "src/naive_bayes.pyx":74
  *         return y
  * 
  *     def __del__ (self):             # <<<<<<<<<<<<<<
@@ -2585,7 +2587,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("naive_bayes.GaussianNaiveBayesClassifier.__del__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.GaussianNaiveBayesClassifier.__del__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2593,7 +2595,7 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":86
+/* "src/naive_bayes.pyx":86
  *     cdef naive_bayes.bnb_classifier* clf
  * 
  *     def __cinit__ (self, n_factors, n_dimensions):             # <<<<<<<<<<<<<<
@@ -2602,8 +2604,8 @@ static PyObject *__pyx_pf_11naive_bayes_28GaussianNaiveBayesClassifier_10__del__
  */
 
 /* Python wrapper */
-static int __pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_n_factors = 0;
   PyObject *__pyx_v_n_dimensions = 0;
   int __pyx_r;
@@ -2648,18 +2650,18 @@ static int __pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(PyO
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 86, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_n_factors, __pyx_v_n_dimensions);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_n_factors, __pyx_v_n_dimensions);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions) {
+static int __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_n_factors, PyObject *__pyx_v_n_dimensions) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2669,7 +2671,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   long __pyx_t_5;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "naive_bayes.pyx":88
+  /* "src/naive_bayes.pyx":88
  *     def __cinit__ (self, n_factors, n_dimensions):
  * 
  *         if isinstance(n_factors, int):             # <<<<<<<<<<<<<<
@@ -2682,7 +2684,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":91
+  /* "src/naive_bayes.pyx":91
  *             pass
  *         else:
  *             raise TypeError("n_factors must be of type int.")             # <<<<<<<<<<<<<<
@@ -2698,7 +2700,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":92
+  /* "src/naive_bayes.pyx":92
  *         else:
  *             raise TypeError("n_factors must be of type int.")
  *         if isinstance(n_dimensions, int):             # <<<<<<<<<<<<<<
@@ -2711,7 +2713,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
     goto __pyx_L4;
   }
 
-  /* "naive_bayes.pyx":95
+  /* "src/naive_bayes.pyx":95
  *             pass
  *         else:
  *             raise TypeError("n_dimensions must be of type int.")             # <<<<<<<<<<<<<<
@@ -2727,7 +2729,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   }
   __pyx_L4:;
 
-  /* "naive_bayes.pyx":97
+  /* "src/naive_bayes.pyx":97
  *             raise TypeError("n_dimensions must be of type int.")
  * 
  *         self.clf = naive_bayes.new_bnb_classifier(n_factors, n_dimensions)             # <<<<<<<<<<<<<<
@@ -2738,7 +2740,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   __pyx_t_5 = __Pyx_PyInt_As_long(__pyx_v_n_dimensions); if (unlikely((__pyx_t_5 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
   __pyx_v_self->clf = new_bnb_classifier(__pyx_t_4, __pyx_t_5);
 
-  /* "naive_bayes.pyx":99
+  /* "src/naive_bayes.pyx":99
  *         self.clf = naive_bayes.new_bnb_classifier(n_factors, n_dimensions)
  * 
  *         if self.clf == NULL:             # <<<<<<<<<<<<<<
@@ -2748,7 +2750,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   __pyx_t_1 = ((__pyx_v_self->clf == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":100
+    /* "src/naive_bayes.pyx":100
  * 
  *         if self.clf == NULL:
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")             # <<<<<<<<<<<<<<
@@ -2761,7 +2763,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(0, 100, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":99
+    /* "src/naive_bayes.pyx":99
  *         self.clf = naive_bayes.new_bnb_classifier(n_factors, n_dimensions)
  * 
  *         if self.clf == NULL:             # <<<<<<<<<<<<<<
@@ -2770,7 +2772,7 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
  */
   }
 
-  /* "naive_bayes.pyx":86
+  /* "src/naive_bayes.pyx":86
  *     cdef naive_bayes.bnb_classifier* clf
  * 
  *     def __cinit__ (self, n_factors, n_dimensions):             # <<<<<<<<<<<<<<
@@ -2783,14 +2785,14 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":102
+/* "src/naive_bayes.pyx":102
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")
  * 
  *     def _t(self,             # <<<<<<<<<<<<<<
@@ -2799,8 +2801,8 @@ static int __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier___cinit__(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_X = 0;
   PyArrayObject *__pyx_v_y = 0;
   int __pyx_v_pop;
@@ -2854,13 +2856,13 @@ static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_t", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 102, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 103, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_5numpy_ndarray, 1, "y", 0))) __PYX_ERR(0, 104, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_pop);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_pop);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2871,7 +2873,7 @@ static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t(PyOb
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop) {
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, int __pyx_v_pop) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_X;
   __Pyx_Buffer __pyx_pybuffer_X;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_y;
@@ -2903,7 +2905,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(stru
   }
   __pyx_pybuffernd_y.diminfo[0].strides = __pyx_pybuffernd_y.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y.diminfo[0].shape = __pyx_pybuffernd_y.rcbuffer->pybuffer.shape[0];
 
-  /* "naive_bayes.pyx":107
+  /* "src/naive_bayes.pyx":107
  *             int pop):
  * 
  *         return naive_bayes.bnb_train(self.clf, &X[0, 0], &y[0], pop)             # <<<<<<<<<<<<<<
@@ -2942,7 +2944,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(stru
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":102
+  /* "src/naive_bayes.pyx":102
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")
  * 
  *     def _t(self,             # <<<<<<<<<<<<<<
@@ -2960,7 +2962,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(stru
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_X.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier._t", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -2972,7 +2974,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(stru
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":109
+/* "src/naive_bayes.pyx":109
  *         return naive_bayes.bnb_train(self.clf, &X[0, 0], &y[0], pop)
  * 
  *     def _c (self,             # <<<<<<<<<<<<<<
@@ -2981,8 +2983,8 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_2_t(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_X = 0;
   PyArrayObject *__pyx_v_y = 0;
   PyObject *__pyx_v_N = 0;
@@ -3036,13 +3038,13 @@ static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyOb
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_c", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_X), __pyx_ptype_5numpy_ndarray, 1, "X", 0))) __PYX_ERR(0, 110, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_5numpy_ndarray, 1, "y", 0))) __PYX_ERR(0, 111, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_N);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y, __pyx_v_N);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3053,7 +3055,7 @@ static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c(PyOb
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N) {
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyArrayObject *__pyx_v_X, PyArrayObject *__pyx_v_y, PyObject *__pyx_v_N) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_X;
   __Pyx_Buffer __pyx_pybuffer_X;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_y;
@@ -3085,7 +3087,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(stru
   }
   __pyx_pybuffernd_y.diminfo[0].strides = __pyx_pybuffernd_y.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_y.diminfo[0].shape = __pyx_pybuffernd_y.rcbuffer->pybuffer.shape[0];
 
-  /* "naive_bayes.pyx":114
+  /* "src/naive_bayes.pyx":114
  *             N):
  * 
  *         return naive_bayes.bnb_classify(self.clf, &X[0, 0], &y[0], N)             # <<<<<<<<<<<<<<
@@ -3125,7 +3127,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(stru
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":109
+  /* "src/naive_bayes.pyx":109
  *         return naive_bayes.bnb_train(self.clf, &X[0, 0], &y[0], pop)
  * 
  *     def _c (self,             # <<<<<<<<<<<<<<
@@ -3143,7 +3145,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(stru
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_X.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_y.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier._c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __pyx_L0:;
@@ -3155,7 +3157,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(stru
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":116
+/* "src/naive_bayes.pyx":116
  *         return naive_bayes.bnb_classify(self.clf, &X[0, 0], &y[0], N)
  * 
  *     def train (self, X, y):             # <<<<<<<<<<<<<<
@@ -3164,8 +3166,8 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_4_c(stru
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_7train(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_X = 0;
   PyObject *__pyx_v_y = 0;
   PyObject *__pyx_r = 0;
@@ -3210,18 +3212,18 @@ static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_7train(P
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("train", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 116, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y);
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), __pyx_v_X, __pyx_v_y);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y) {
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X, PyObject *__pyx_v_y) {
   int __pyx_v_pop;
   PyObject *__pyx_v_status = NULL;
   PyObject *__pyx_r = NULL;
@@ -3237,7 +3239,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("train", 0);
 
-  /* "naive_bayes.pyx":118
+  /* "src/naive_bayes.pyx":118
  *     def train (self, X, y):
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -3264,7 +3266,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":121
+  /* "src/naive_bayes.pyx":121
  *             pass
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -3280,7 +3282,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":122
+  /* "src/naive_bayes.pyx":122
  *         else:
  *             raise TypeError()
  *         if isinstance(y, np.ndarray) and y.ndim==1:             # <<<<<<<<<<<<<<
@@ -3307,7 +3309,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
     goto __pyx_L6;
   }
 
-  /* "naive_bayes.pyx":125
+  /* "src/naive_bayes.pyx":125
  *             pass
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -3323,7 +3325,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   }
   __pyx_L6:;
 
-  /* "naive_bayes.pyx":127
+  /* "src/naive_bayes.pyx":127
  *             raise TypeError()
  * 
  *         cdef int pop = len(y)             # <<<<<<<<<<<<<<
@@ -3333,7 +3335,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   __pyx_t_6 = PyObject_Length(__pyx_v_y); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 127, __pyx_L1_error)
   __pyx_v_pop = __pyx_t_6;
 
-  /* "naive_bayes.pyx":129
+  /* "src/naive_bayes.pyx":129
  *         cdef int pop = len(y)
  * 
  *         status = self._t(X, y, pop)             # <<<<<<<<<<<<<<
@@ -3377,20 +3379,20 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   __pyx_v_status = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "naive_bayes.pyx":131
+  /* "src/naive_bayes.pyx":131
  *         status = self._t(X, y, pop)
  * 
  *         if status:             # <<<<<<<<<<<<<<
- *             raise RuntimeError("bnb Training Failed")
+ *             raise RuntimeError("BNB Training Failed")
  * 
  */
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_status); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 131, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":132
+    /* "src/naive_bayes.pyx":132
  * 
  *         if status:
- *             raise RuntimeError("bnb Training Failed")             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("BNB Training Failed")             # <<<<<<<<<<<<<<
  * 
  *     def classify (self, X):
  */
@@ -3400,16 +3402,16 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __PYX_ERR(0, 132, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":131
+    /* "src/naive_bayes.pyx":131
  *         status = self._t(X, y, pop)
  * 
  *         if status:             # <<<<<<<<<<<<<<
- *             raise RuntimeError("bnb Training Failed")
+ *             raise RuntimeError("BNB Training Failed")
  * 
  */
   }
 
-  /* "naive_bayes.pyx":116
+  /* "src/naive_bayes.pyx":116
  *         return naive_bayes.bnb_classify(self.clf, &X[0, 0], &y[0], N)
  * 
  *     def train (self, X, y):             # <<<<<<<<<<<<<<
@@ -3426,7 +3428,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.train", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_status);
@@ -3435,8 +3437,8 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":134
- *             raise RuntimeError("bnb Training Failed")
+/* "src/naive_bayes.pyx":134
+ *             raise RuntimeError("BNB Training Failed")
  * 
  *     def classify (self, X):             # <<<<<<<<<<<<<<
  * 
@@ -3444,19 +3446,19 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_6train(s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X) {
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify(PyObject *__pyx_v_self, PyObject *__pyx_v_X) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("classify (wrapper)", 0);
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), ((PyObject *)__pyx_v_X));
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self), ((PyObject *)__pyx_v_X));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X) {
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_8classify(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self, PyObject *__pyx_v_X) {
   int __pyx_v_N;
   PyObject *__pyx_v_y = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_status = NULL;
@@ -3474,7 +3476,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __Pyx_RefNannySetupContext("classify", 0);
   __Pyx_INCREF(__pyx_v_X);
 
-  /* "naive_bayes.pyx":138
+  /* "src/naive_bayes.pyx":138
  *         cdef int N
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -3499,7 +3501,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":139
+    /* "src/naive_bayes.pyx":139
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)             # <<<<<<<<<<<<<<
@@ -3509,7 +3511,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
     __pyx_t_6 = PyObject_Length(__pyx_v_X); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 139, __pyx_L1_error)
     __pyx_v_N = __pyx_t_6;
 
-    /* "naive_bayes.pyx":138
+    /* "src/naive_bayes.pyx":138
  *         cdef int N
  * 
  *         if isinstance(X, np.ndarray) and X.ndim==2:             # <<<<<<<<<<<<<<
@@ -3519,7 +3521,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":140
+  /* "src/naive_bayes.pyx":140
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:             # <<<<<<<<<<<<<<
@@ -3544,7 +3546,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":141
+    /* "src/naive_bayes.pyx":141
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]             # <<<<<<<<<<<<<<
@@ -3556,7 +3558,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
     __Pyx_DECREF_SET(__pyx_v_X, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "naive_bayes.pyx":142
+    /* "src/naive_bayes.pyx":142
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]
  *             N = 1             # <<<<<<<<<<<<<<
@@ -3565,7 +3567,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
  */
     __pyx_v_N = 1;
 
-    /* "naive_bayes.pyx":140
+    /* "src/naive_bayes.pyx":140
  *         if isinstance(X, np.ndarray) and X.ndim==2:
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:             # <<<<<<<<<<<<<<
@@ -3575,7 +3577,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
     goto __pyx_L3;
   }
 
-  /* "naive_bayes.pyx":144
+  /* "src/naive_bayes.pyx":144
  *             N = 1
  *         else:
  *             raise TypeError()             # <<<<<<<<<<<<<<
@@ -3591,7 +3593,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   }
   __pyx_L3:;
 
-  /* "naive_bayes.pyx":146
+  /* "src/naive_bayes.pyx":146
  *             raise TypeError()
  * 
  *         y = np.zeros(N, dtype=long)             # <<<<<<<<<<<<<<
@@ -3621,7 +3623,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __pyx_v_y = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "naive_bayes.pyx":147
+  /* "src/naive_bayes.pyx":147
  * 
  *         y = np.zeros(N, dtype=long)
  *         status = self._c(X, y, N)             # <<<<<<<<<<<<<<
@@ -3665,7 +3667,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __pyx_v_status = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "naive_bayes.pyx":149
+  /* "src/naive_bayes.pyx":149
  *         status = self._c(X, y, N)
  * 
  *         return y             # <<<<<<<<<<<<<<
@@ -3677,8 +3679,8 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __pyx_r = __pyx_v_y;
   goto __pyx_L0;
 
-  /* "naive_bayes.pyx":134
- *             raise RuntimeError("bnb Training Failed")
+  /* "src/naive_bayes.pyx":134
+ *             raise RuntimeError("BNB Training Failed")
  * 
  *     def classify (self, X):             # <<<<<<<<<<<<<<
  * 
@@ -3692,7 +3694,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.classify", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.classify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_y);
@@ -3703,7 +3705,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
   return __pyx_r;
 }
 
-/* "naive_bayes.pyx":151
+/* "src/naive_bayes.pyx":151
  *         return y
  * 
  *     def __del__ (self):             # <<<<<<<<<<<<<<
@@ -3712,19 +3714,19 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_8classif
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__del__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(((struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self));
+  __pyx_r = __pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(((struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self) {
+static PyObject *__pyx_pf_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del__(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier *__pyx_v_self) {
   int __pyx_v_status;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3732,7 +3734,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("__del__", 0);
 
-  /* "naive_bayes.pyx":153
+  /* "src/naive_bayes.pyx":153
  *     def __del__ (self):
  * 
  *         status = naive_bayes.free_bnb_classifier(self.clf)             # <<<<<<<<<<<<<<
@@ -3741,7 +3743,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
  */
   __pyx_v_status = free_bnb_classifier(__pyx_v_self->clf);
 
-  /* "naive_bayes.pyx":155
+  /* "src/naive_bayes.pyx":155
  *         status = naive_bayes.free_bnb_classifier(self.clf)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -3750,7 +3752,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
   __pyx_t_1 = (__pyx_v_status != 0);
   if (__pyx_t_1) {
 
-    /* "naive_bayes.pyx":156
+    /* "src/naive_bayes.pyx":156
  * 
  *         if status:
  *             raise MemoryError("Deallocation failed")             # <<<<<<<<<<<<<<
@@ -3761,7 +3763,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __PYX_ERR(0, 156, __pyx_L1_error)
 
-    /* "naive_bayes.pyx":155
+    /* "src/naive_bayes.pyx":155
  *         status = naive_bayes.free_bnb_classifier(self.clf)
  * 
  *         if status:             # <<<<<<<<<<<<<<
@@ -3769,7 +3771,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
  */
   }
 
-  /* "naive_bayes.pyx":151
+  /* "src/naive_bayes.pyx":151
  *         return y
  * 
  *     def __del__ (self):             # <<<<<<<<<<<<<<
@@ -3782,7 +3784,7 @@ static PyObject *__pyx_pf_11naive_bayes_29BernoulliNaiveBayesClassifier_10__del_
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("naive_bayes.BernoulliNaiveBayesClassifier.__del__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("src.naive_bayes.BernoulliNaiveBayesClassifier.__del__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5912,7 +5914,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_11naive_bayes_GaussianNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_3src_11naive_bayes_GaussianNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k) {
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -5920,13 +5922,13 @@ static PyObject *__pyx_tp_new_11naive_bayes_GaussianNaiveBayesClassifier(PyTypeO
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(o, a, k) < 0)) {
+  if (unlikely(__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_1__cinit__(o, a, k) < 0)) {
     Py_DECREF(o); o = 0;
   }
   return o;
 }
 
-static void __pyx_tp_dealloc_11naive_bayes_GaussianNaiveBayesClassifier(PyObject *o) {
+static void __pyx_tp_dealloc_3src_11naive_bayes_GaussianNaiveBayesClassifier(PyObject *o) {
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -5935,21 +5937,21 @@ static void __pyx_tp_dealloc_11naive_bayes_GaussianNaiveBayesClassifier(PyObject
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_11naive_bayes_GaussianNaiveBayesClassifier[] = {
-  {"_t", (PyCFunction)__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_3_t, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_c", (PyCFunction)__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_5_c, METH_VARARGS|METH_KEYWORDS, 0},
-  {"train", (PyCFunction)__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_7train, METH_VARARGS|METH_KEYWORDS, 0},
-  {"classify", (PyCFunction)__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_9classify, METH_O, 0},
-  {"__del__", (PyCFunction)__pyx_pw_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__, METH_NOARGS, 0},
+static PyMethodDef __pyx_methods_3src_11naive_bayes_GaussianNaiveBayesClassifier[] = {
+  {"_t", (PyCFunction)__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_3_t, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_c", (PyCFunction)__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_5_c, METH_VARARGS|METH_KEYWORDS, 0},
+  {"train", (PyCFunction)__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_7train, METH_VARARGS|METH_KEYWORDS, 0},
+  {"classify", (PyCFunction)__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_9classify, METH_O, 0},
+  {"__del__", (PyCFunction)__pyx_pw_3src_11naive_bayes_28GaussianNaiveBayesClassifier_11__del__, METH_NOARGS, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_11naive_bayes_GaussianNaiveBayesClassifier = {
+static PyTypeObject __pyx_type_3src_11naive_bayes_GaussianNaiveBayesClassifier = {
   PyVarObject_HEAD_INIT(0, 0)
-  "naive_bayes.GaussianNaiveBayesClassifier", /*tp_name*/
-  sizeof(struct __pyx_obj_11naive_bayes_GaussianNaiveBayesClassifier), /*tp_basicsize*/
+  "src.naive_bayes.GaussianNaiveBayesClassifier", /*tp_name*/
+  sizeof(struct __pyx_obj_3src_11naive_bayes_GaussianNaiveBayesClassifier), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_dealloc*/
+  __pyx_tp_dealloc_3src_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -5977,7 +5979,7 @@ static PyTypeObject __pyx_type_11naive_bayes_GaussianNaiveBayesClassifier = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_methods*/
+  __pyx_methods_3src_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -5987,7 +5989,7 @@ static PyTypeObject __pyx_type_11naive_bayes_GaussianNaiveBayesClassifier = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_new*/
+  __pyx_tp_new_3src_11naive_bayes_GaussianNaiveBayesClassifier, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6002,7 +6004,7 @@ static PyTypeObject __pyx_type_11naive_bayes_GaussianNaiveBayesClassifier = {
   #endif
 };
 
-static PyObject *__pyx_tp_new_11naive_bayes_BernoulliNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k) {
+static PyObject *__pyx_tp_new_3src_11naive_bayes_BernoulliNaiveBayesClassifier(PyTypeObject *t, PyObject *a, PyObject *k) {
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -6010,13 +6012,13 @@ static PyObject *__pyx_tp_new_11naive_bayes_BernoulliNaiveBayesClassifier(PyType
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(o, a, k) < 0)) {
+  if (unlikely(__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_1__cinit__(o, a, k) < 0)) {
     Py_DECREF(o); o = 0;
   }
   return o;
 }
 
-static void __pyx_tp_dealloc_11naive_bayes_BernoulliNaiveBayesClassifier(PyObject *o) {
+static void __pyx_tp_dealloc_3src_11naive_bayes_BernoulliNaiveBayesClassifier(PyObject *o) {
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -6025,21 +6027,21 @@ static void __pyx_tp_dealloc_11naive_bayes_BernoulliNaiveBayesClassifier(PyObjec
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_11naive_bayes_BernoulliNaiveBayesClassifier[] = {
-  {"_t", (PyCFunction)__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_c", (PyCFunction)__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c, METH_VARARGS|METH_KEYWORDS, 0},
-  {"train", (PyCFunction)__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_7train, METH_VARARGS|METH_KEYWORDS, 0},
-  {"classify", (PyCFunction)__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify, METH_O, 0},
-  {"__del__", (PyCFunction)__pyx_pw_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__, METH_NOARGS, 0},
+static PyMethodDef __pyx_methods_3src_11naive_bayes_BernoulliNaiveBayesClassifier[] = {
+  {"_t", (PyCFunction)__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_3_t, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_c", (PyCFunction)__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_5_c, METH_VARARGS|METH_KEYWORDS, 0},
+  {"train", (PyCFunction)__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_7train, METH_VARARGS|METH_KEYWORDS, 0},
+  {"classify", (PyCFunction)__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_9classify, METH_O, 0},
+  {"__del__", (PyCFunction)__pyx_pw_3src_11naive_bayes_29BernoulliNaiveBayesClassifier_11__del__, METH_NOARGS, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier = {
+static PyTypeObject __pyx_type_3src_11naive_bayes_BernoulliNaiveBayesClassifier = {
   PyVarObject_HEAD_INIT(0, 0)
-  "naive_bayes.BernoulliNaiveBayesClassifier", /*tp_name*/
-  sizeof(struct __pyx_obj_11naive_bayes_BernoulliNaiveBayesClassifier), /*tp_basicsize*/
+  "src.naive_bayes.BernoulliNaiveBayesClassifier", /*tp_name*/
+  sizeof(struct __pyx_obj_3src_11naive_bayes_BernoulliNaiveBayesClassifier), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_dealloc*/
+  __pyx_tp_dealloc_3src_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -6067,7 +6069,7 @@ static PyTypeObject __pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_methods*/
+  __pyx_methods_3src_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6077,7 +6079,7 @@ static PyTypeObject __pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_new*/
+  __pyx_tp_new_3src_11naive_bayes_BernoulliNaiveBayesClassifier, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6115,6 +6117,7 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_kp_s_BNB_Training_Failed, __pyx_k_BNB_Training_Failed, sizeof(__pyx_k_BNB_Training_Failed), 0, 0, 1, 0},
   {&__pyx_kp_s_Deallocation_failed, __pyx_k_Deallocation_failed, sizeof(__pyx_k_Deallocation_failed), 0, 0, 1, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
@@ -6127,7 +6130,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_n_s_X, __pyx_k_X, sizeof(__pyx_k_X), 0, 0, 1, 1},
-  {&__pyx_kp_s_bnb_Training_Failed, __pyx_k_bnb_Training_Failed, sizeof(__pyx_k_bnb_Training_Failed), 0, 0, 1, 0},
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -6165,7 +6167,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "naive_bayes.pyx":14
+  /* "src/naive_bayes.pyx":14
  *             pass
  *         else:
  *             raise TypeError("n_factors must be of type int.")             # <<<<<<<<<<<<<<
@@ -6176,7 +6178,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "naive_bayes.pyx":18
+  /* "src/naive_bayes.pyx":18
  *             pass
  *         else:
  *             raise TypeError("n_dimensions must be of type int.")             # <<<<<<<<<<<<<<
@@ -6187,7 +6189,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "naive_bayes.pyx":23
+  /* "src/naive_bayes.pyx":23
  * 
  *         if self.clf == NULL:
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")             # <<<<<<<<<<<<<<
@@ -6198,7 +6200,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "naive_bayes.pyx":55
+  /* "src/naive_bayes.pyx":55
  * 
  *         if status:
  *             raise RuntimeError("GNB Training Failed")             # <<<<<<<<<<<<<<
@@ -6209,7 +6211,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "naive_bayes.pyx":64
+  /* "src/naive_bayes.pyx":64
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]             # <<<<<<<<<<<<<<
@@ -6223,7 +6225,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "naive_bayes.pyx":79
+  /* "src/naive_bayes.pyx":79
  * 
  *         if status:
  *             raise MemoryError("Deallocation failed")             # <<<<<<<<<<<<<<
@@ -6234,7 +6236,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "naive_bayes.pyx":91
+  /* "src/naive_bayes.pyx":91
  *             pass
  *         else:
  *             raise TypeError("n_factors must be of type int.")             # <<<<<<<<<<<<<<
@@ -6245,7 +6247,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "naive_bayes.pyx":95
+  /* "src/naive_bayes.pyx":95
  *             pass
  *         else:
  *             raise TypeError("n_dimensions must be of type int.")             # <<<<<<<<<<<<<<
@@ -6256,7 +6258,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "naive_bayes.pyx":100
+  /* "src/naive_bayes.pyx":100
  * 
  *         if self.clf == NULL:
  *             raise MemoryError("Naive_Bayes_Classifier could not be allocated.")             # <<<<<<<<<<<<<<
@@ -6267,18 +6269,18 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "naive_bayes.pyx":132
+  /* "src/naive_bayes.pyx":132
  * 
  *         if status:
- *             raise RuntimeError("bnb Training Failed")             # <<<<<<<<<<<<<<
+ *             raise RuntimeError("BNB Training Failed")             # <<<<<<<<<<<<<<
  * 
  *     def classify (self, X):
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_bnb_Training_Failed); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_BNB_Training_Failed); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "naive_bayes.pyx":141
+  /* "src/naive_bayes.pyx":141
  *             N = len(X)
  *         elif isinstance(X, np.ndarray) and X.ndim==1:
  *             X = X[:, ]             # <<<<<<<<<<<<<<
@@ -6292,7 +6294,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "naive_bayes.pyx":156
+  /* "src/naive_bayes.pyx":156
  * 
  *         if status:
  *             raise MemoryError("Deallocation failed")             # <<<<<<<<<<<<<<
@@ -6447,14 +6449,14 @@ PyMODINIT_FUNC PyInit_naive_bayes(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_naive_bayes) {
+  if (__pyx_module_is_main_src__naive_bayes) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "naive_bayes")) {
-      if (unlikely(PyDict_SetItemString(modules, "naive_bayes", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "src.naive_bayes")) {
+      if (unlikely(PyDict_SetItemString(modules, "src.naive_bayes", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -6466,14 +6468,14 @@ PyMODINIT_FUNC PyInit_naive_bayes(void)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_11naive_bayes_GaussianNaiveBayesClassifier) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __pyx_type_11naive_bayes_GaussianNaiveBayesClassifier.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "GaussianNaiveBayesClassifier", (PyObject *)&__pyx_type_11naive_bayes_GaussianNaiveBayesClassifier) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
-  __pyx_ptype_11naive_bayes_GaussianNaiveBayesClassifier = &__pyx_type_11naive_bayes_GaussianNaiveBayesClassifier;
-  if (PyType_Ready(&__pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "BernoulliNaiveBayesClassifier", (PyObject *)&__pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_ptype_11naive_bayes_BernoulliNaiveBayesClassifier = &__pyx_type_11naive_bayes_BernoulliNaiveBayesClassifier;
+  if (PyType_Ready(&__pyx_type_3src_11naive_bayes_GaussianNaiveBayesClassifier) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_type_3src_11naive_bayes_GaussianNaiveBayesClassifier.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "GaussianNaiveBayesClassifier", (PyObject *)&__pyx_type_3src_11naive_bayes_GaussianNaiveBayesClassifier) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_ptype_3src_11naive_bayes_GaussianNaiveBayesClassifier = &__pyx_type_3src_11naive_bayes_GaussianNaiveBayesClassifier;
+  if (PyType_Ready(&__pyx_type_3src_11naive_bayes_BernoulliNaiveBayesClassifier) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_type_3src_11naive_bayes_BernoulliNaiveBayesClassifier.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "BernoulliNaiveBayesClassifier", (PyObject *)&__pyx_type_3src_11naive_bayes_BernoulliNaiveBayesClassifier) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_ptype_3src_11naive_bayes_BernoulliNaiveBayesClassifier = &__pyx_type_3src_11naive_bayes_BernoulliNaiveBayesClassifier;
   /*--- Type import code ---*/
   __pyx_ptype_7cpython_4type_type = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "type", 
   #if CYTHON_COMPILING_IN_PYPY
@@ -6494,8 +6496,8 @@ PyMODINIT_FUNC PyInit_naive_bayes(void)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "naive_bayes.pyx":2
- * cimport naive_bayes
+  /* "src/naive_bayes.pyx":2
+ * cimport src.naive_bayes as naive_bayes
  * import numpy as np             # <<<<<<<<<<<<<<
  * cimport numpy as np
  * 
@@ -6505,8 +6507,8 @@ PyMODINIT_FUNC PyInit_naive_bayes(void)
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "naive_bayes.pyx":1
- * cimport naive_bayes             # <<<<<<<<<<<<<<
+  /* "src/naive_bayes.pyx":1
+ * cimport src.naive_bayes as naive_bayes             # <<<<<<<<<<<<<<
  * import numpy as np
  * cimport numpy as np
  */
@@ -6530,11 +6532,11 @@ PyMODINIT_FUNC PyInit_naive_bayes(void)
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init naive_bayes", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init src.naive_bayes", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init naive_bayes");
+    PyErr_SetString(PyExc_ImportError, "init src.naive_bayes");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

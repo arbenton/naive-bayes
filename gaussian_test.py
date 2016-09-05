@@ -1,5 +1,7 @@
 import numpy as np
 from naive_bayes import GaussianNaiveBayesClassifier
+from sklearn.naive_bayes import GaussianNB
+import timeit
 
 np.random.seed(100)
 n = 100
@@ -8,8 +10,6 @@ cat_2 = np.array([np.random.normal(3, 1, n), np.random.normal(0, 1, n)]).T
 X = np.vstack((cat_1, cat_2)).copy(order="c")
 y = np.array([0 for _ in cat_1] + [1 for _ in cat_2]).copy(order="c")
 
-from sklearn.naive_bayes import GaussianNB
-import timeit
 print "Scikit Learn Benchmark"
 start_time = timeit.default_timer()
 skclf = GaussianNB()

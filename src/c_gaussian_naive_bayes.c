@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <gsl/gsl_randist.h>
 #include <gsl/gsl_statistics_double.h>
 
@@ -103,10 +104,10 @@ inline long int gnb_classify_one(gnb_classifier *clf, double *X)
 
 	/* Evidence */
 
-	evid = 1.;
+	evid = 0.;
 	for (d=0; d<dim; d++) {
 		temp = (X[d] - clf->mean[d]) / clf->std[d];
-		evid *= gsl_ran_gaussian_pdf(temp, 1.0);
+		evid += log(gsl_ran_gaussian_pdf(temp, 1.0));
 	}
 
 	/* Select best class */
@@ -118,15 +119,15 @@ inline long int gnb_classify_one(gnb_classifier *clf, double *X)
 
 		/* Calculate Likelhood */
 
-		like = 1.;
+		like = 0.;
 		for (d=f*dim; d<(f+1)*dim; d++) {
 			temp = (X[d%dim] - clf->class_mean[d]) / clf->class_std[d];
-			like *=  gsl_ran_gaussian_pdf(temp, 1.0);
+			like +=  log(gsl_ran_gaussian_pdf(temp, 1.0));
 		}
 
 		/* Posteriors and selection */
 
-		post[f] = clf->class_prior[f] * like / evid;
+		post[f] = exp(log(clf->class_prior[f]) + like - evid);
 		if (best < post[f]) {
 			best = post[f];
 			class = f;

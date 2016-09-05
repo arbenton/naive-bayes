@@ -6,8 +6,7 @@ ext_type = Extension("naive_bayes",
                             "src/c_gaussian_naive_bayes.c", 
                             "src/c_bernoulli_naive_bayes.c"],
                     libraries=["gsl", "gslcblas", "m"],
-                    library_dirs=["/usr/lib/x86_64-linux-gnu"],
-                    extra_compile_args=["-O3"])
+                    library_dirs=["/usr/lib/x86_64-linux-gnu"])
 
 setup(name="naive_bayes",
       ext_modules = cythonize([ext_type]))

@@ -1,4 +1,4 @@
-cimport naive_bayes
+cimport src.naive_bayes as naive_bayes
 import numpy as np
 cimport numpy as np
 
@@ -129,7 +129,7 @@ cdef class BernoulliNaiveBayesClassifier:
         status = self._t(X, y, pop)
 
         if status:
-            raise RuntimeError("bnb Training Failed")
+            raise RuntimeError("BNB Training Failed")
 
     def classify (self, X):
 
