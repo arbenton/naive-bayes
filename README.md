@@ -1,6 +1,6 @@
 # Naive Bayes
 
-A C implementation of gaussian naive bayes with python bindings.
+A C implementation of gaussian and bernoulli naive bayes with python bindings.
 
 ### Setup
 

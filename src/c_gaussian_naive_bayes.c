@@ -3,7 +3,7 @@
 #include <gsl/gsl_randist.h>
 #include <gsl/gsl_statistics_double.h>
 
-#include "c_naive_bayes.h"
+#include "c_gaussian_naive_bayes.h"
 
 struct _gnb_classifier {
 	double *mean;
@@ -43,14 +43,14 @@ int free_gnb_classifier(gnb_classifier *clf)
     return 0;
 }
 
-long int gnb_train(gnb_classifier *clf, double *X, long int *y, long int pop)
+int gnb_train(gnb_classifier *clf, double *X, long int *y, long int pop)
 {
     long int dim = clf->dim;
     long int fac = clf->fac;
 
     double work[pop*dim]; // workspace array
-	long int len;
-	long int f, p, d;
+	int len;
+	int f, p, d;
 
     /* mean and standard deviation */
 
@@ -86,7 +86,7 @@ long int gnb_train(gnb_classifier *clf, double *X, long int *y, long int pop)
     return 0;
 }
 
-long int gnb_classify(gnb_classifier *clf, double *X)
+inline long int gnb_classify_one(gnb_classifier *clf, double *X)
 {
 	long int dim, fac;
 
@@ -99,7 +99,7 @@ long int gnb_classify(gnb_classifier *clf, double *X)
 	double like;
 	double post[fac];
 	double temp;
-	long int d, f;
+	int d, f;
 
 	/* Evidence */
 
@@ -134,4 +134,16 @@ long int gnb_classify(gnb_classifier *clf, double *X)
 	}
 
 	return class;
+}
+
+int gnb_classify(gnb_classifier *clf, double *X, long int *y, long int N)
+{
+    int n;
+    long int dim = clf->dim;
+
+    for (n=0; n<N; n++) {
+        y[n] = gnb_classify_one(clf, X+n*dim);
+    }
+
+    return 0;
 }
